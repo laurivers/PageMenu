@@ -74,6 +74,7 @@ public enum CAPSPageMenuOption {
     case UseMenuLikeSegmentedControl(Bool)
     case MenuItemSeparatorRoundEdges(Bool)
     case MenuItemFont(UIFont)
+    case MenuItemSelectedFont(UIFont)
     case MenuItemSeparatorPercentageHeight(CGFloat)
     case MenuItemWidth(CGFloat)
     case EnableHorizontalBounce(Bool)
@@ -118,7 +119,8 @@ public class CAPSPageMenu: UIViewController, UIGestureRecognizerDelegate {
     public var bottomMenuHairlineColor: UIColor = UIColor.whiteColor()
     public var menuItemSeparatorColor: UIColor = UIColor.lightGrayColor()
     
-    public var menuItemFont: UIFont = UIFont.systemFontOfSize(15.0)
+    public var menuItemFont: UIFont = UIFont.systemFontOfSize(16.0)
+    public var menuItemSelectedFont: UIFont = UIFont.systemFontOfSize(19.0)
     public var menuItemSeparatorPercentageHeight: CGFloat = 0.2
     public var menuItemSeparatorWidth: CGFloat = 0.5
     public var menuItemSeparatorRoundEdges: Bool = false
@@ -211,6 +213,8 @@ public class CAPSPageMenu: UIViewController, UIGestureRecognizerDelegate {
                     menuItemSeparatorRoundEdges = value
                 case let .MenuItemFont(value):
                     menuItemFont = value
+                case let .MenuItemSelectedFont(value):
+                    menuItemSelectedFont = value
                 case let .MenuItemSeparatorPercentageHeight(value):
                     menuItemSeparatorPercentageHeight = value
                 case let .MenuItemWidth(value):
