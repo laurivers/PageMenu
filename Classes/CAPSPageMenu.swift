@@ -86,7 +86,7 @@ public enum CAPSPageMenuOption {
     case ShowSettingButton(UIImage?)
 }
 
-public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+public class CAPSPageMenu: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
     
