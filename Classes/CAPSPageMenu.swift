@@ -158,17 +158,17 @@ public class CAPSPageMenu: UIViewController, UIGestureRecognizerDelegate {
     
     var settingButton: UIButton?
     var settingButtonImage: UIImage?
-    private var settingButtonWidth: CGFloat = 0
+    var settingButtonWidth: CGFloat = 0
     
     // MARK: - View life cycle
     
     /**
-    Initialize PageMenu with view controllers
-    
-    - parameter viewControllers: List of view controllers that must be subclasses of UIViewController
-    - parameter frame: Frame for page menu view
-    - parameter options: Dictionary holding any customization options user might want to set
-    */
+     Initialize PageMenu with view controllers
+     
+     - parameter viewControllers: List of view controllers that must be subclasses of UIViewController
+     - parameter frame: Frame for page menu view
+     - parameter options: Dictionary holding any customization options user might want to set
+     */
     public init(viewControllers: [UIViewController], frame: CGRect, options: [String: AnyObject]?) {
         super.init(nibName: nil, bundle: nil)
         
@@ -256,21 +256,21 @@ public class CAPSPageMenu: UIViewController, UIGestureRecognizerDelegate {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-	
-//	// MARK: - Container View Controller
-//	public override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
-//		return true
-//	}
-//
-//	public override func shouldAutomaticallyForwardRotationMethods() -> Bool {
-//		return true
-//	}
-
+    
+    //	// MARK: - Container View Controller
+    //	public override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
+    //		return true
+    //	}
+    //
+    //	public override func shouldAutomaticallyForwardRotationMethods() -> Bool {
+    //		return true
+    //	}
+    
 }
 
 // MARK: - Scroll view delegate
 extension CAPSPageMenu: UIScrollViewDelegate {
-  
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !didLayoutSubviewsAfterRotation {
             if scrollView.isEqual(controllerScrollView) {
@@ -598,7 +598,7 @@ extension CAPSPageMenu {
                     let menuItemWidth = (self.view.frame.width - marginSum) / CGFloat(controllerArray.count)
                     menuItemFrame = CGRect(x: CGFloat(menuItemMargin * (index + 1)) + menuItemWidth * CGFloat(index), y: 0.0, width: CGFloat(self.view.frame.width) / CGFloat(controllerArray.count), height: menuHeight)
                 } else {
-                menuItemFrame = CGRect(x: (self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count) * CGFloat(index), y: 0.0, width: CGFloat(self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count), height: menuHeight)
+                    menuItemFrame = CGRect(x: (self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count) * CGFloat(index), y: 0.0, width: CGFloat(self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count), height: menuHeight)
                 }
                 //**************************拡張ここまで*************************************
             } else if menuItemWidthBasedOnTitleTextWidth {
@@ -636,7 +636,7 @@ extension CAPSPageMenu {
                     let menuItemWidth = (self.view.frame.width - marginSum) / CGFloat(controllerArray.count)
                     menuItemView.setUpMenuItemView(menuItemWidth, menuScrollViewHeight: menuHeight, indicatorHeight: selectionIndicatorHeight, separatorPercentageHeight: menuItemSeparatorPercentageHeight, separatorWidth: menuItemSeparatorWidth, separatorRoundEdges: menuItemSeparatorRoundEdges, menuItemSeparatorColor: menuItemSeparatorColor)
                 } else {
-                menuItemView.setUpMenuItemView(CGFloat(self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count), menuScrollViewHeight: menuHeight, indicatorHeight: selectionIndicatorHeight, separatorPercentageHeight: menuItemSeparatorPercentageHeight, separatorWidth: menuItemSeparatorWidth, separatorRoundEdges: menuItemSeparatorRoundEdges, menuItemSeparatorColor: menuItemSeparatorColor)
+                    menuItemView.setUpMenuItemView(CGFloat(self.view.frame.width - settingButtonWidth) / CGFloat(controllerArray.count), menuScrollViewHeight: menuHeight, indicatorHeight: selectionIndicatorHeight, separatorPercentageHeight: menuItemSeparatorPercentageHeight, separatorWidth: menuItemSeparatorWidth, separatorRoundEdges: menuItemSeparatorRoundEdges, menuItemSeparatorColor: menuItemSeparatorColor)
                 }
                 //**************************拡張ここまで*************************************
             } else {
@@ -715,7 +715,7 @@ extension CAPSPageMenu {
     // Adjusts the menu item frames to size item width based on title text width and center all menu items in the center
     // if the menuItems all fit in the width of the view. Otherwise, it will adjust the frames so that the menu items
     // appear as if only menuItemWidthBasedOnTitleTextWidth is true.
-    private func configureMenuItemWidthBasedOnTitleTextWidthAndCenterMenuItems() {
+    public func configureMenuItemWidthBasedOnTitleTextWidthAndCenterMenuItems() {
         // only center items if the combined width is less than the width of the entire view's bounds
         if menuScrollView.contentSize.width < self.view.bounds.width {
             // compute the margin required to center the menu items
@@ -994,10 +994,10 @@ extension CAPSPageMenu {
     // MARK: - Move to page index
     
     /**
-    Move to page at index
-    
-    - parameter index: Index of the page to move to
-    */
+     Move to page at index
+     
+     - parameter index: Index of the page to move to
+     */
     public func moveToPage(_ index: Int) {
         if index >= 0 && index < controllerArray.count {
             // Update page if changed
